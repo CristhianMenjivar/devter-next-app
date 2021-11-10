@@ -16,6 +16,7 @@ const Posts = ({ posts = [] }) => {
         {posts.map((post) => (
           <div className="w-full sm:1/2 md:w-1/2 lg:w-1/4 p-3" key={post.id}>
             <div className="bg-white rounded shadow overflow-hidden border border-gray-300">
+              {/* @next/next/no-img-element */}
               <img className="w-full" src={post.thumbnail} alt={post.title} />
               <div className="px-6 py-4">
                 <div className="font-bold text-xl mb-2">{post.title}</div>

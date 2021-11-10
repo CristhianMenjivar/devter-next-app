@@ -33,7 +33,7 @@ const AppLayout = ({
                 className="h-10 w-10 hover:bg-gray-100 flex items-center justify-center rounded-full"
                 onClick={handlerBack}
               >
-                <Image src={BackIcon} width={25} height={25} />
+                <Image src={BackIcon} width={25} height={25} alt="back" />
               </button>
               <p className="text-blue-700 font-sans font-bold text-lg uppercase ml-4">
                 {titlePage}

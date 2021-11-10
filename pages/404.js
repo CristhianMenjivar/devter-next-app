@@ -17,10 +17,6 @@ const Page404 = () => {
         <title>404 Error Page Design In Tailwind CSS</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link
-          href="https://fonts.googleapis.com/css?family=Nunito+Sans:300i,400,700&display=swap"
-          rel="stylesheet"
-        />
       </Head>
       <div className="w-9/12 m-auto py-16 min-h-screen flex items-center justify-center">
         <div className="bg-white shadow overflow-hidden sm:rounded-lg pb-8">
