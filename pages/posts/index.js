@@ -1,20 +1,6 @@
-import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
 import AppLayout from "../../components/AppLayout";
 
-const Posts = () => {
-  const [posts, setPosts] = useState([]);
-
-  const router = useRouter();
-
-  const handlerBack = () => router.back();
-
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/posts")
-      .then((res) => res.json())
-      .then((data) => setPosts(data));
-  }, []);
-
+const Posts = ({ posts = [] }) => {
   return (
     <AppLayout
       seo={{
@@ -23,19 +9,52 @@ const Posts = () => {
         icon: "/favicon.ico",
       }}
       showButtonBack={true}
+      titlePage="All Posts"
     >
-      <h1>Posts</h1>
-
-      <ul>
+      {/* tailwind post list */}
+      <div className="flex flex-wrap">
         {posts.map((post) => (
-          <li key={post.id}>
-            <h2>{post.title}</h2>
-            <p>{post.body}</p>
-          </li>
+          <div className="w-full sm:1/2 md:w-1/2 lg:w-1/4 p-3" key={post.id}>
+            <div className="bg-white rounded shadow overflow-hidden border border-gray-300">
+              <img className="w-full" src={post.thumbnail} alt={post.title} />
+              <div className="px-6 py-4">
+                <div className="font-bold text-xl mb-2">{post.title}</div>
+                <p className="text-gray-700 text-base">{post.body}</p>
+              </div>
+              <div className="px-6 py-4">
+                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
+                  #photography
+                </span>
+                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
+                  #travel
+                </span>
+                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">
+                  #winter
+                </span>
+              </div>
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
     </AppLayout>
   );
+};
+
+Posts.getInitialProps = async (_ctx) => {
+  try {
+    const res = await fetch("http://localhost:3000/api/post");
+    const result = await res.json();
+
+    const { posts } = result;
+
+    return {
+      posts,
+    };
+  } catch (error) {
+    return {
+      error,
+    };
+  }
 };
 
 export default Posts;
