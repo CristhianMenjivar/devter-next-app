@@ -1,10 +1,7 @@
-const accessKey = "Gntck0hwEHtGvsJ9jCaa1jOaWNFqgHL5hm_Bpv2Bn8M";
-// const secretKey = "hY9Zi8fehJt5KJCSOLHQQb-3xc0XKZIOYl5PvONZagI";
-
 // get random image
 const getImageByIdUnsplash = () => {
   return fetch(
-    `https://api.unsplash.com/photos/random?count=1&client_id=${accessKey}`
+    `https://api.unsplash.com/photos/random?count=1&client_id=${process.env.accessKeyUnsplash}`
   )
     .then((res) => res.json())
     .then((data) => {

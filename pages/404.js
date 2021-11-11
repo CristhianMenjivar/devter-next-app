@@ -15,7 +15,6 @@ const Page404 = () => {
     <div className="bg-gradient-to-r from-purple-300 to-blue-200">
       <Head>
         <title>404 Error Page Design In Tailwind CSS</title>
-        <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <div className="w-9/12 m-auto py-16 min-h-screen flex items-center justify-center">

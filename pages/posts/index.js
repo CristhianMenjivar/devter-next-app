@@ -1,4 +1,5 @@
 import AppLayout from "../../components/AppLayout";
+import { URL_BASE } from "../../herlpers/config";
 
 const Posts = ({ posts = [] }) => {
   return (
@@ -43,7 +44,7 @@ const Posts = ({ posts = [] }) => {
 
 Posts.getInitialProps = async (_ctx) => {
   try {
-    const res = await fetch("http://localhost:3000/api/post");
+    const res = await fetch(`${URL_BASE}/post`);
     const result = await res.json();
 
     const { posts } = result;
