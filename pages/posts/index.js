@@ -1,6 +1,7 @@
 import Image from "next/image";
 import AppLayout from "../../components/AppLayout";
 import { URL_BASE } from "../../herlpers/config";
+import Zoom from "react-medium-image-zoom";
 
 const Posts = ({ posts = [] }) => {
   return (
@@ -21,13 +22,15 @@ const Posts = ({ posts = [] }) => {
             key={post.id}
           >
             <div className="bg-white rounded shadow overflow-hidden border border-gray-300">
-              <Image
-                className="w-full"
-                width={700}
-                height={600}
-                src={post.thumbnail}
-                alt={post.title}
-              />
+              <Zoom zoomMargin={40}>
+                <Image
+                  className="w-full"
+                  width={700}
+                  height={600}
+                  src={post.thumbnail.regular}
+                  alt={post.title}
+                />
+              </Zoom>
               <div className="px-6 py-4">
                 <div className="font-bold text-xl mb-2">{post.title}</div>
                 <p className="text-gray-700 text-base">{post.body}</p>

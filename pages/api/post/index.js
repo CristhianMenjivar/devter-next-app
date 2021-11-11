@@ -14,7 +14,7 @@ const getRandomImagesApiUnsplash = (count = 10) => {
   )
     .then((res) => res.json())
     .then((data) => {
-      return data.map((item) => item.urls.small);
+      return data.map((item) => item.urls);
     });
 };
 
@@ -26,7 +26,6 @@ const getRandom = (images = [], i) => {
 };
 
 export default async function listPost(_req, res) {
-  // get api posts data
   try {
     const result = await fetch(
       "https://jsonplaceholder.typicode.com/posts?_limit=15"
