@@ -50,13 +50,33 @@ const AppLayout = ({
         <div className="container">{children}</div>
       </main>
       {/* footer tailwind Design */}
-      <footer className="bg-gray-100 p-5">
+      <footer className="bg-gray-100 p-5 border-2">
         <div className="container mx-auto flex flex-col items-center">
-          <p className="text-center text-lg">
-            &copy; {new Date().getFullYear()} Devter
-          </p>
+          <a
+            href="mailto:cristianmenjivar95@gmail.com
+              ?subject=Devter-Next-App
+              &body=Hola, necesito información
+              "
+            className="text-blue-900 hover:text-blue-500"
+          >
+            <p className="text-center text-lg">
+              &copy; {new Date().getFullYear()} Devter
+            </p>
+          </a>
         </div>
       </footer>
+
+      <style jsx>
+        {`
+          header {
+            margin-bottom: 2.5px;
+          }
+
+          footer {
+            margin-top: 2.5px;
+          }
+        `}
+      </style>
     </div>
   );
 };

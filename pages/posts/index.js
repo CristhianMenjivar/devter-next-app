@@ -17,11 +17,8 @@ const Posts = ({ posts = [] }) => {
       {/* tailwind post list */}
       <div className="flex flex-wrap">
         {posts.map((post) => (
-          <div
-            className="w-full  sm:1/2 md:w-1/2 lg:w-1/3 xl:w-1/4 p-3"
-            key={post.id}
-          >
-            <div className="bg-white rounded shadow overflow-hidden border border-gray-300">
+          <div className="w-full  sm:1/2 md:w-1/2 lg:w-1/3 p-3" key={post.id}>
+            <div className="bg-white rounded shadow overflow-hidden border border-gray-300 hover:shadow-lg">
               <Zoom zoomMargin={40}>
                 <Image
                   className="w-full"
@@ -32,8 +29,10 @@ const Posts = ({ posts = [] }) => {
                 />
               </Zoom>
               <div className="px-6 py-4">
-                <div className="font-bold text-xl mb-2">{post.title}</div>
-                <p className="text-gray-700 text-base">{post.body}</p>
+                <div className="font-bold text-xl mb-2 uppercase">
+                  {post.title}
+                </div>
+                <p className="text-gray-700 text-base ">{post.body}</p>
               </div>
               <div className="px-6 py-4">
                 <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
