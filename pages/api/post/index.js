@@ -8,7 +8,7 @@ const sortPosts = (posts) => {
 };
 
 // get random image
-const getRandomImagesApiUnsplash = (count = 100) => {
+const getRandomImagesApiUnsplash = (count = 10) => {
   return fetch(
     `https://api.unsplash.com/photos/random?count=${count}&client_id=${process.env.accessKeyUnsplash}`
   )
@@ -19,23 +19,27 @@ const getRandomImagesApiUnsplash = (count = 100) => {
 };
 
 // get random
-const getRandom = (images = []) => {
-  return images[Math.floor(Math.random() * images.length)];
+const getRandom = (images = [], i) => {
+  return images[i]
+    ? images[i]
+    : images[Math.floor(Math.random() * images.length)];
 };
 
 export default async function listPost(_req, res) {
   // get api posts data
   try {
-    const result = await fetch("https://jsonplaceholder.typicode.com/posts");
+    const result = await fetch(
+      "https://jsonplaceholder.typicode.com/posts?_limit=15"
+    );
     const posts = await result.json();
 
-    const images = await getRandomImagesApiUnsplash();
+    const images = await getRandomImagesApiUnsplash(posts.length);
 
-    const sortedPosts = sortPosts(posts).map((p) => ({
+    const sortedPosts = sortPosts(posts).map((p, i) => ({
       id: p.id,
       title: p.title,
       body: p.body,
-      thumbnail: getRandom(images),
+      thumbnail: getRandom(images, i),
     }));
 
     res.status(200).json({
