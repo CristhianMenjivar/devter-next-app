@@ -18,7 +18,7 @@ const AppLayout = ({
   const handlerBack = () => router.back();
 
   return (
-    <div className="bg-gray-100 flex flex-col justify-between h-screen">
+    <div className="flex flex-col justify-between h-screen">
       <Head>
         <title>{seo.title}</title>
         <meta name="description" content={seo.content} />
@@ -35,18 +35,18 @@ const AppLayout = ({
               >
                 <Image src={BackIcon} width={25} height={25} alt="back" />
               </button>
-              <p className="text-blue-700 font-sans font-bold text-lg uppercase ml-4">
+              <p className="text-blue-700 font-bold text-lg uppercase ml-4">
                 {titlePage}
               </p>
             </div>
           ) : (
-            <p className="text-blue-700 font-sans font-bold text-lg uppercase">
+            <p className="text-blue-700 font-bold text-lg uppercase">
               {titlePage}
             </p>
           )}
         </div>
       </header>
-      <main className=" flex-1 overflow-scroll flex flex-col items-center">
+      <main className="flex-1 overflow-scroll flex flex-col items-center">
         <div className="container">{children}</div>
       </main>
       {/* footer tailwind Design */}
